@@ -13,6 +13,3 @@ while num <= 100:
     else:
         print(num)
     num += 1
-
-
-

@@ -8,15 +8,16 @@ while not quit_var:
     if choice == "1":
         input_str = input("Please, input string")
         if input_str[::1] == input_str[::-1]:
-            print("\""+input_str+"\" "+"is palindrome")
+            print("\"" + input_str + "\" " + "is palindrome")
         else:
-            print("\""+input_str+"\" "+"is not palindrome")
+            print("\"" + input_str + "\" " + " is not palindrome")
     else:
         for i in ["String", "refer", "Madam", "Iryna", "type"]:
             if i == i[::-1]:
                 print("\"" + i + "\" " + "is palindrome")
             else:
-                print("\"" + i + "\" " + "is not palindrome")
-    choice_quit = input("If you want to quit press \"q\" and any other if you don't\n")
+                print("\"" + i + "\" " + " is not palindrome")
+    choice_quit = input("If you want to quit press \"q\" "
+                        "and any other if you don't\n")
     if choice_quit == "q":
         quit_var = True
