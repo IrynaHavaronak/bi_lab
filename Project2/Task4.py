@@ -8,6 +8,6 @@
 # as a single line of space-separated integers.
 
 
-nd = input("Insert n and d values separeted by space: ").split(" ")
+nd = input("Insert n and d values separated by space: ").split(" ")
 n = int(nd[1])
 d = int(nd[2])
