@@ -1,5 +1,3 @@
-from typing import List
-
 
 def generate_numbers(n=20):
     dict1 = {}
