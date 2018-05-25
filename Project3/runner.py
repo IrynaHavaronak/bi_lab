@@ -1,10 +1,7 @@
 import pytasks
 
 
-def runner(str1="", str2=""):
-    if str2 != "":
-        runner(str1)
-        runner(str2)
+def runner(str1=""):
     if str1 == "":
         print(pytasks.generate_numbers())
         print(pytasks.count_characters())
@@ -23,6 +20,3 @@ def runner(str1="", str2=""):
         print(pytasks.count_characters())
     elif str == "happy_numbers":
         print(pytasks.happy_numbers())
-
-
-runner("happy_numbers", "is_palindrome")
