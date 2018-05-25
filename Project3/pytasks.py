@@ -43,10 +43,10 @@ def happy_numbers(n=100):
     past = set()
     result = [1]
     end_cycle = False
-    for i in range(2, n+1):
+    for i in range(2, n + 1):
         num = i
         while not end_cycle:
-            num = sum(int(j)**2 for j in str(num))
+            num = sum(int(j) ** 2 for j in str(num))
             if num in past:
                 end_cycle = True
             past.add(num)
