@@ -1,4 +1,5 @@
-class hotelRoom:
+class Room:
+    """A simple example"""
 
     def __init__(self, number, accommodate,
                  price, engaged=False, rooms_num=1, bathroom=1):
@@ -51,8 +52,8 @@ class hotelRoom:
         return self.price * 0.10
 
 
-room101 = hotelRoom(101, 2, 105)
-room102 = hotelRoom(102, 3, 105)
+room101 = Room(101, 2, 105)
+room102 = Room(102, 3, 105)
 print(room101)
 print("Does room 101 equal to room 102: ", room101 == room102)
 print("Taxes for room 101: ", room101.tax())
