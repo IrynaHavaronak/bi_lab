@@ -1,52 +1,35 @@
 import csv
+import numpy as np
 
+imdb_data = open('IMDB-Movie-Data.csv', 'r', encoding='utf-8')
 
-def avg_rating(lst):
-    imdb_data.sort(key=lambda x: x[6], reverse=True)
-    year = list()
-    rating = list()
-    notes_num = list()
-    for item in lst:
-        if item[6] in year:
-            ind = year.index(item[6])
-            rating[ind] += float(item[8])
-            notes_num[ind] += 1
-        else:
-            year.append(item[6])
-            rating.append(float(item[8]))
-            notes_num.append(1)
-    for i in range(0, len(rating)):
-        rating[i] /= notes_num[i]
-    return [year, rating]
-
-
-file_name = "IMDB-Movie-Data.csv"
-top_filename = "top250_movies.csv"
-rating_filename = "ratings.csv"
-try:
-    with open(file_name, 'r') as imdb_file:
-        imdb_file.readline()
-        imdb_reader = csv.reader(imdb_file, delimiter=',', quotechar="\"")
-        imdb_data = []
-        for i in imdb_reader:
-            imdb_data.append(i,)
-        imdb_data.sort(key=lambda x: x[8], reverse=True)
-        top_file = open(top_filename, 'w')
-        fieldnames = ['Title', 'Rating']
-        top_out = csv.DictWriter(top_file, fieldnames=fieldnames)
-        top_out.writeheader()
-        for i in range(0, 251):
-            top_out.writerow({fieldnames[0]: imdb_data[i][1],
-                              fieldnames[1]: imdb_data[i][8]})
-        top_file.close()
-        rating_file = open(rating_filename, 'w')
-        fieldnames = ['Year', 'Avg Rating']
-        rating_out = csv.DictWriter(rating_file, fieldnames=fieldnames)
-        rating_out.writeheader()
-        res = avg_rating(imdb_data)
-        for i in range(0, len(res[0])):
-            rating_out.writerow({fieldnames[0]: res[0][i],
-                                 fieldnames[1]: res[1][i]})
-        rating_file.close()
-except FileNotFoundError:
-    print("ERROR: File %s is not found" % file_name)
+if imdb_data:
+    imdb_reader = csv.reader(imdb_data)
+    imdb_list = list(imdb_reader)
+    top_videos = sorted(imdb_list[1:], key=lambda x: float(x[8]),
+                        reverse=True)[:250]
+    # find top 250
+    with open('top250_movies.csv', 'w', encoding='utf-8',
+              newline='') as top250_data:
+        top250_writer = csv.writer(top250_data)
+        top250_writer.writerow(imdb_list[0])
+        for row in top_videos:
+            top250_writer.writerow(row)
+    top250_data.close()
+    # calculate average rating
+    year_rating_dict = {}
+    for row in imdb_list[1:]:
+        if year_rating_dict.get(row[6]) is None:
+            year_rating_dict[row[6]] = list()
+            year_rating_dict[row[6]].append(float(row[8]))
+    with open('rating.csv', 'w', encoding='utf-8', newline='') as rating_data:
+        rating_writer = csv.writer(rating_data)
+        rating_writer.writerow(['Year', 'Average Rating'])
+        sorted_keys = sorted(year_rating_dict.keys(), key=lambda x: int(x))
+        for k in sorted_keys:
+            rating_writer.writerow([k, '{:1.2f}'.
+                                   format(np.mean(year_rating_dict[k]))])
+    rating_data.close()
+else:
+    imdb_data.close()
+    raise FileNotFoundError(imdb_data)
