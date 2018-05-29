@@ -1,4 +1,4 @@
-class Room:
+class Room(object):
     """A simple example"""
 
     def __init__(self, number, accommodate,
