@@ -1,24 +1,15 @@
 
 def generate_numbers(n=20):
-    dict1 = {}
-    for i in range(1, n + 1):
-        dict1.update({i: i ** 2})
-    return dict1
+    return {i: i**2 for i in range(1, n + 1)}
 
 
-def count_characters(count_me_string="ababplplp"):
-    count_me_list = list(count_me_string)
-    dict1 = {}
-    for i in count_me_list:
-        if i not in dict1.keys():
-            dict1.update({i: count_me_list.count(i)})
-    return dict1
+def count_characters(count_str="irina havaronak"):
+    return {i: count_str.count(i) for i in count_str}
 
 
 def fizzbuzz(count=100):
-    num = 1
     result_list = []
-    while num <= count:
+    for num in range(1, count + 1):
         if num % 15 == 0:
             result_list += ["FizzBuzz"]
         elif num % 5 == 0:
@@ -27,32 +18,24 @@ def fizzbuzz(count=100):
             result_list += ["Fizz"]
         else:
             result_list += [num]
-        num += 1
     return result_list
 
 
 def is_palindrome(input_str="madam"):
-    if input_str == input_str[::-1]:
-        checker = True
-    else:
-        checker = False
-    return checker
+    return input_str == input_str[::-1]
 
 
 def happy_numbers(n=100):
     past = set()
     result = [1]
-    end_cycle = False
     for i in range(2, n + 1):
         num = i
-        while not end_cycle:
+        while True:
             num = sum(int(j) ** 2 for j in str(num))
             if num in past:
-                end_cycle = True
+                break
             past.add(num)
             if num == 1:
                 result.append(i)
-                end_cycle = True
         past.clear()
-        end_cycle = False
     return result
