@@ -13,4 +13,3 @@ def happy_numbers(n=100):
                 result.append(i)
         past.clear()
     return result
-

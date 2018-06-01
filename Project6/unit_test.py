@@ -12,8 +12,8 @@ class HappyNumbersTest(unittest.TestCase):
     __res2 = [1, 7, 10, 13, 19, 23, 28, 31, 32]
 
     def test_result(self):
-        self.assertEquals(test_code.happy_numbers(10), self.__res1)
-        self.assertEquals(test_code.happy_numbers(40), self.__res2)
+        self.assertEqual(test_code.happy_numbers(10), self.__res1)
+        self.assertEqual(test_code.happy_numbers(40), self.__res2)
 
 
 if __name__ == '__main__':
