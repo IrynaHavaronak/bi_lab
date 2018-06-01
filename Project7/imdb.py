@@ -1,5 +1,5 @@
-import csv
 import argparse
+import csv
 from sortedcontainers import SortedDict
 parser = argparse.ArgumentParser()
 
@@ -46,7 +46,7 @@ if imdb_data:
     if parser.parse_args().output is not None:
         with open(parser.parse_args().output, 'w') as f:
             for row in imdb_list:
-                f.writelines(str(row)+'\n')
+                f.writelines(str(row) + '\n')
 else:
     imdb_data.close()
     print('File \"IMDB-Movie-Data.csv\" not found!')
