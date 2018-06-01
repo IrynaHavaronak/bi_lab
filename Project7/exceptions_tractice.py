@@ -1,6 +1,6 @@
 def div(dev=5, d=0):
     try:
-        return dev/d
+        return dev / d
     except ZeroDivisionError:
         print("Zero Division is prohibited!")
         return None
