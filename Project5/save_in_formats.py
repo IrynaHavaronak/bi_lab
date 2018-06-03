@@ -42,7 +42,7 @@ def data_dict(arc):
 
 def save_as_csv(arc):
     data = parse_data(arc)
-    with open(arc[:len(arc)-1-arc[::-1].index('.'):]+".csv", 'w',
+    with open(arc[:len(arc) - 1 - arc[::-1].index('.'):] + ".csv", 'w',
               newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=';')
         csv_writer.writerows(data)
@@ -50,7 +50,7 @@ def save_as_csv(arc):
 
 def save_as_json(arc):
     data = data_dict(arc)
-    with open(arc[:len(arc)-1-arc[::-1].index('.'):]+".json", 'w') as \
+    with open(arc[:len(arc) - 1 - arc[::-1].index('.'):] + ".json", 'w') as \
             j_file:
         json.dump(data, j_file)
 
@@ -69,7 +69,7 @@ def save_as_xml(arc):
         ET.SubElement(doc, "field5", name=data[0][4]).text = i[4]
 
     tree = ET.ElementTree(root)
-    tree.write(arc[:len(arc)-1-arc[::-1].index('.'):]+".xml")
+    tree.write(arc[:len(arc) - 1 - arc[::-1].index('.'):] + ".xml")
 
 
 def save_as_yaml(arc):
@@ -77,4 +77,3 @@ def save_as_yaml(arc):
     with open(arc[:len(arc) - 1 - arc[::-1].index('.'):] + ".yaml", 'w') as \
             y_file:
         yaml.dump(data, y_file)
-
