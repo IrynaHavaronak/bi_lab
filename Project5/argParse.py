@@ -12,12 +12,13 @@ parser.add_argument("--format", nargs='?',
                     default='csv', help='Put one of the following formats: '
                                         'csv, json, xml, yaml')
 
-url_parse = parser.parse_args().download
-filename = url_parse[len(url_parse) - url_parse[::-1].index('/'):]
-address = url_parse[:url_parse.index('/'):]
-f1 = url_parse.index('/') + 1
-f2 = len(url_parse) - url_parse[::-1].index('/') - 1
-directory = url_parse[f1:f2]
+url_parse = parser.parse_args()
+filename = url_parse.download[len(url_parse.download) - url_parse.download[
+                                                 ::-1].index('/'):]
+address = url_parse.download[:url_parse.download.index('/'):]
+f1 = url_parse.download.index('/') + 1
+f2 = len(url_parse.download) - url_parse.download[::-1].index('/') - 1
+directory = url_parse.download[f1:f2]
 f_format = url_parse.format
 print(directory)
 print(filename)
