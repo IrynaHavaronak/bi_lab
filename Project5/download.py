@@ -1,6 +1,7 @@
+from ftplib import FTP
 import gzip
 import os
-from ftplib import FTP
+
 
 try:
     if not os.path.isfile("ratings.gz"):

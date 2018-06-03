@@ -1,8 +1,8 @@
 import argparse
-import os
-import gzip
-import save_in_formats as sf
 from ftplib import FTP
+import gzip
+import os
+import save_in_formats as sf
 
 url_def = 'ftp.fu-berlin.de/pub/misc/movies/database/frozendata/ratings.list' \
           '.gz'

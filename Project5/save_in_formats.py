@@ -1,6 +1,6 @@
+import csv
 import gzip
 import json
-import csv
 import xml.etree.ElementTree as ET
 import yaml
 
